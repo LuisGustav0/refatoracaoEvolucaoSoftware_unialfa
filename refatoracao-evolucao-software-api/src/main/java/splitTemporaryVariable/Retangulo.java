@@ -1,13 +1,21 @@
 package splitTemporaryVariable;
 
-public class Retangulo {
-	private double altura;
-	private double largura;
+import java.util.Optional;
 
-	public void calcular() {
-		double temp = 2 * (altura + largura);
-		System.out.println(temp);
-		temp = altura * largura;
-		System.out.println(temp);
-	}
+public class Retangulo {
+  private double altura;
+  private double largura;
+
+  public Retangulo(double altura, double largura) {
+    this.altura = Optional.ofNullable(altura).orElse(0D);
+    this.largura = Optional.ofNullable(largura).orElse(0D);
+  }
+
+  public double getPerimetro() {
+    return 2 * (this.altura + this.largura);
+  }
+
+  public double getArea() {
+    return this.altura * this.largura;
+  }
 }

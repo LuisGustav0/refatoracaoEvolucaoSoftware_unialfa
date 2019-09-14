@@ -11,11 +11,11 @@ public class Viajante {
 
   public String getBebida() throws Exception {
     String simplName = Optional.ofNullable(tipoViajante)
-            .map(TipoViajante::getClass)
-            .map(Class::getSimpleName)
-            .map(Optional::ofNullable)
-            .map(Optional::get)
-            .orElse("NaoExiste");
+                               .map(TipoViajante::getClass)
+                               .map(Class::getSimpleName)
+                               .map(Optional::ofNullable)
+                               .map(Optional::get)
+                               .orElse("ViajanteNaoExiste");
 
     switch (simplName) {
       case "Alemao":
