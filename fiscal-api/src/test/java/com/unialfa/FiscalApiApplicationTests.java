@@ -1,4 +1,4 @@
-package com.unialfa.fiscalapi;
+package com.unialfa;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
