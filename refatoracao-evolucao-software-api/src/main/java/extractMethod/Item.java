@@ -2,11 +2,14 @@ package extractMethod;
 
 import java.math.BigDecimal;
 
-public class Itens {
+public class Item {
   private String nome;
   private BigDecimal valor;
 
-  public Itens(String nome, BigDecimal valor) {
+  public Item() {
+  }
+
+  public Item(String nome, BigDecimal valor) {
     this.nome = nome;
     this.valor = valor;
   }
