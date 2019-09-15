@@ -69,13 +69,11 @@ public class NotaFiscalController {
   }
 
   @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
-  public ModelAndView excluir(@PathVariable Long id, RedirectAttributes attributes) {
-    ModelAndView modelAndView = new ModelAndView("redirect:/nota-fiscal");
-
+  public ModelAndView excluir(@PathVariable Long id, RedirectAttributes redirectAttributes) {
     this.notaFiscalService.delete(id);
 
-    modelAndView.addObject("mensagem", "Nota fiscal excluída com sucesso!");
+    redirectAttributes.addFlashAttribute("mensagem", "Nota fiscal excluída com sucesso!");
 
-    return modelAndView;
+    return new ModelAndView("redirect:/nota-fiscal");
   }
 }
