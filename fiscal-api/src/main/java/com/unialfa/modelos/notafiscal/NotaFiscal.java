@@ -86,4 +86,8 @@ public class NotaFiscal implements Serializable {
   public void setValorTotal(BigDecimal valorTotal) {
     this.valorTotal = valorTotal;
   }
+
+  public boolean isNotaFiscalExiste() {
+    return this.id != null;
+  }
 }
