@@ -1,0 +1,31 @@
+.navbar-brand {
+    padding-top: 12px;
+}
+
+.img-logo {
+    width: 250px !important;
+    height: 60px !important;
+}
+
+.panel-default {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.card-body {
+    padding: 0px;
+}
+
+.card-margin {
+    margin: 20px;
+}
+
+.alert {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.link-panel {
+    float: right;
+    padding: 0px;
+}

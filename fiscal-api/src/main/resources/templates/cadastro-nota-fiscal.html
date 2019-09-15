@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout-padrao">
+
+<head>
+    <title>Cadastro de Nota Fiscal</title>
+</head>
+
+<section layout:fragment="conteudo">
+    <form
+            class="form-horizontal"
+            method="post"
+            action="/nota-fiscal"
+            th:object="${notaFiscal}">
+
+        <div layout:insert="alerta-geral"></div>
+        <div layout:insert="alerta-erro"></div>
+
+        <div class="card card-margin">
+            <div class="card-body">
+                <div class="card-header">
+                    Cadastro de Nota Fiscal
+
+                    <a class="btn btn-link link-panel" href="/nota-fiscal">
+                        Voltar para pesquisa
+                    </a>
+                </div>
+
+                <input type="hidden" th:field="*{id}"/>
+
+                <div class="form-group">
+                    <label
+                            for="empresa"
+                            class="col-sm-2 control-label">
+                        Empresa <span style="color: red">*</span>
+                    </label>
+                    <div class="col-sm-4 is-invalid">
+                        <input
+                                type="text"
+                                class="form-control"
+                                th:classappend="${#fields.hasErrors('tipoImposto')} ? is-invalid"
+                                id="empresa"
+                                th:field="*{empresa}"
+                        />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label
+                            for="tipoImposto"
+                            class="col-sm-2 control-label">
+                        Tipo imposto <span style="color: red">*</span>
+                    </label>
+                    <div class="col-sm-2">
+                        <select
+                                id="tipoImposto"
+                                class="form-control"
+                                th:classappend="${#fields.hasErrors('tipoImposto')} ? is-invalid"
+                                th:field="*{tipoImposto}">
+                            <option value="">Selecione tipo imposto</option>
+                            <option
+                                    th:each="tipoImpostoE : ${listaTipoImpostoE}"
+                                    th:value="${tipoImpostoE}"
+                                    th:text="${tipoImpostoE}">
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label
+                            for="imposto"
+                            class="col-sm-2 control-label">
+                        Imposto <span style="color: red">*</span>
+                    </label>
+                    <div class="col-sm-2">
+                        <input
+                                type="text"
+                                class="form-control"
+                                th:classappend="${#fields.hasErrors('imposto')} ? is-invalid"
+                                id="imposto"
+                                th:field="*{imposto}"
+                        />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="valor" class="col-sm-2 control-label">
+                        Valor <span style="color: red">*</span>
+                    </label>
+                    <div class="col-sm-2">
+                        <input
+                                type="text"
+                                class="form-control"
+                                th:classappend="${#fields.hasErrors('valor')} ? is-invalid"
+                                id="valor"
+                                th:field="*{valor}"
+                        />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button
+                                type="submit"
+                                class="btn btn-primary">
+                            Salvar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+</html>

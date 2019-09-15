@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout-padrao">
+
+<head>
+    <title>Pesquisa de Nota Fiscal</title>
+</head>
+
+<section layout:fragment="conteudo">
+    <div layout:insert="alerta-geral"></div>
+
+    <div class="card card-margin">
+        <div class="card-header">
+            Pesquisa de Nota Fiscal
+
+            <a class="btn btn-link link-panel" href="/nota-fiscal/novo">
+                Nova Nota Fiscal
+            </a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive-sm">
+                <table class="table table-sm table-bordered table-striped">
+                    <thread>
+                        <tr>
+                            <th class="text-center"> #</th>
+                            <th class="text-left"> Empresa</th>
+                            <th class="text-center"> Tipo Imposto</th>
+                            <th class="text-right"> Imposto</th>
+                            <th class="text-right"> Valor</th>
+                            <th class="text-right"> Valor Total</th>
+                            <th class="text-left"></th>
+                        </tr>
+                    </thread>
+                    <tbody>
+                    <tr th:each="notaFiscal : ${listaNotaFiscal}">
+                        <td class="text-center" th:text="${notaFiscal.id}">1</td>
+                        <td th:text="${notaFiscal.empresa}"></td>
+                        <td class="text-center">
+                                    <span
+                                            class="badge"
+                                            th:text="${notaFiscal.tipoImposto}"
+                                            th:classappend="${notaFiscal.tipoImpostoISS ? 'badge-primary' : 'badge-success'}">
+                                    </span>
+                        </td>
+                        <td class="text-right" th:text="|R$ ${{notaFiscal.imposto}}|"></td>
+                        <td class="text-right" th:text="|R$ ${{notaFiscal.valor}}|"></td>
+                        <td class="text-right" th:text="|R$ ${{notaFiscal.valorTotal}}|"></td>
+                        <td class="text-center">
+                            <a class="btn btn-link btn-xs"
+                               th:href="@{/nota-fiscal/{id}(id=${notaFiscal.id})}">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+
+                            <a
+                                    class="btn btn-link btn-xs"
+                                    data-toggle="modal"
+                                    data-target="#confirmacaoExclusaoModal"
+                                    th:attr="data-id=${notaFiscal.id}, data-empresa=${notaFiscal.empresa}">
+                                <i class="fa fa-remove"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="12" th:if="${#lists.isEmpty(listaNotaFiscal)}">
+                            Nenhuma nota fiscal foi encontrado!
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div layout:insert="dialogo-confirmacao-exclusao"></div>
+    </div>
+</section>
+</html>
