@@ -47,7 +47,9 @@ public class NotaFiscalController {
   }
 
   @RequestMapping(method = RequestMethod.POST)
-  public ModelAndView salvar(@Validated NotaFiscal notaFiscal, Errors errors, RedirectAttributes attributes) {
+  public ModelAndView salvar(@Validated NotaFiscal notaFiscal,
+                             Errors errors,
+                             RedirectAttributes attributes) {
     if (errors.hasErrors()) {
       return new ModelAndView(VIEW_CADASTRO);
     }
