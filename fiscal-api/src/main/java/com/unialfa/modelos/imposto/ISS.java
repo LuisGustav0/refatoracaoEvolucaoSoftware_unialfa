@@ -5,6 +5,8 @@ import java.math.BigDecimal;
 public class ISS implements ImpostoI {
   @Override
   public BigDecimal calcular(BigDecimal valorBruto) {
-    return valorBruto.multiply(new BigDecimal(0.10));
+    BigDecimal valorISS = BigDecimal.valueOf(0.10);
+
+    return valorBruto.multiply(valorISS);
   }
 }
