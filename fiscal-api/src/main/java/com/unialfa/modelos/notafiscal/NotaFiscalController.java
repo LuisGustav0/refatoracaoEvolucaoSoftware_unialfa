@@ -26,7 +26,7 @@ public class NotaFiscalController {
     return Arrays.asList(TipoImpostoE.values());
   }
 
-  @RequestMapping("/novo")
+  @GetMapping("/novo")
   public ModelAndView novo() {
     ModelAndView modelAndView = new ModelAndView(VIEW_CADASTRO);
 
@@ -35,7 +35,7 @@ public class NotaFiscalController {
     return modelAndView;
   }
 
-  @RequestMapping
+  @GetMapping
   public ModelAndView findAll() {
     ModelAndView modelAndView = new ModelAndView(VIEW_PESQUISA);
 
@@ -46,7 +46,7 @@ public class NotaFiscalController {
     return modelAndView;
   }
 
-  @RequestMapping(method = RequestMethod.POST)
+  @PostMapping
   public ModelAndView salvar(@Validated NotaFiscal notaFiscal,
                              Errors errors,
                              RedirectAttributes attributes) {
@@ -61,7 +61,7 @@ public class NotaFiscalController {
     return new ModelAndView("redirect:/nota-fiscal/novo");
   }
 
-  @RequestMapping("{id}")
+  @GetMapping("{id}")
   public ModelAndView edit(@PathVariable("id") NotaFiscal notaFiscal) {
     ModelAndView modelAndView = new ModelAndView(VIEW_CADASTRO);
 
@@ -70,7 +70,7 @@ public class NotaFiscalController {
     return modelAndView;
   }
 
-  @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+  @DeleteMapping(value = "{id}")
   public ModelAndView excluir(@PathVariable Long id, RedirectAttributes redirectAttributes) {
     this.notaFiscalService.delete(id);
 
