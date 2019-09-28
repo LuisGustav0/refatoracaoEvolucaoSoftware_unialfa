@@ -30,7 +30,7 @@ public class NotaFiscalController {
   public ModelAndView novo() {
     ModelAndView modelAndView = new ModelAndView(VIEW_CADASTRO);
 
-    modelAndView.addObject("notaFiscal", new NotaFiscal());
+    modelAndView.addObject("notaFiscalTO", new NotaFiscalTO());
 
     return modelAndView;
   }
@@ -39,33 +39,33 @@ public class NotaFiscalController {
   public ModelAndView findAll() {
     ModelAndView modelAndView = new ModelAndView(VIEW_PESQUISA);
 
-    List<NotaFiscal> listaNotaFiscal = this.notaFiscalService.findAll();
+    List<NotaFiscalTO> listaNotaFiscalTO = this.notaFiscalService.findAll();
 
-    modelAndView.addObject("listaNotaFiscal", listaNotaFiscal);
+    modelAndView.addObject("listaNotaFiscal", listaNotaFiscalTO);
 
     return modelAndView;
   }
 
   @PostMapping
-  public ModelAndView salvar(@Validated NotaFiscal notaFiscal,
+  public ModelAndView salvar(@Validated NotaFiscalTO notaFiscalTO,
                              Errors errors,
                              RedirectAttributes attributes) {
     if (errors.hasErrors()) {
       return new ModelAndView(VIEW_CADASTRO);
     }
 
-    this.notaFiscalService.save(notaFiscal);
+    NotaFiscalTO notaFiscalTOSalvo = this.notaFiscalService.save(notaFiscalTO);
 
-    attributes.addFlashAttribute("mensagem", "Nota fiscal salva com sucesso!");
+    attributes.addFlashAttribute("mensagem", "Nota fiscal salva com sucesso! " + notaFiscalTOSalvo.getId());
 
     return new ModelAndView("redirect:/nota-fiscal/novo");
   }
 
   @GetMapping("{id}")
-  public ModelAndView edit(@PathVariable("id") NotaFiscal notaFiscal) {
+  public ModelAndView edit(@PathVariable("id") NotaFiscalTO notaFiscalTO) {
     ModelAndView modelAndView = new ModelAndView(VIEW_CADASTRO);
 
-    modelAndView.addObject(notaFiscal);
+    modelAndView.addObject(notaFiscalTO);
 
     return modelAndView;
   }

@@ -13,7 +13,7 @@
             class="form-horizontal"
             method="post"
             action="/nota-fiscal"
-            th:object="${notaFiscal}">
+            th:object="${notaFiscalTO}">
 
         <div layout:insert="alerta-geral"></div>
         <div layout:insert="alerta-erro"></div>
@@ -101,7 +101,7 @@
                     </div>
                 </div>
 
-                <div class="form-group" th:if="${notaFiscal.notaFiscalExiste}">
+                <div class="form-group" th:if="${notaFiscalTO.notaFiscalExiste}">
                     <label for="valor" class="col-sm-2 control-label">
                         Valor Total
                     </label>

@@ -12,29 +12,29 @@ public class NotaFiscalService {
   @Autowired
   private NotaFiscalRepository notaFiscalRepository;
 
-  public List<NotaFiscal> findAll() {
+  public List<NotaFiscalTO> findAll() {
     return notaFiscalRepository.findAll();
   }
 
-  private void onCalcularImposto(NotaFiscal notaFiscal) {
-    BigDecimal valorBruto = notaFiscal.getValor().add(notaFiscal.getImposto());
+  private void onCalcularImposto(NotaFiscalTO notaFiscalTO) {
+    BigDecimal valorBruto = notaFiscalTO.getValor().add(notaFiscalTO.getImposto());
 
-    BigDecimal valorImposto = notaFiscal.getTipoImposto().getImposto().calcular(valorBruto);
+    BigDecimal valorImposto = notaFiscalTO.getTipoImposto().getImposto().calcular(valorBruto);
     BigDecimal valorTotal = valorBruto.add(valorImposto);
 
-    notaFiscal.setValorTotal(valorTotal);
+    notaFiscalTO.setValorTotal(valorTotal);
   }
 
-  private NotaFiscal onAntesSalvar(NotaFiscal notaFiscal) {
-    onCalcularImposto(notaFiscal);
+  private NotaFiscalTO onAntesSalvar(NotaFiscalTO notaFiscalTO) {
+    onCalcularImposto(notaFiscalTO);
 
-    return notaFiscal;
+    return notaFiscalTO;
   }
 
-  public NotaFiscal save(NotaFiscal notaFiscal) {
-    onAntesSalvar(notaFiscal);
+  public NotaFiscalTO save(NotaFiscalTO notaFiscalTO) {
+    onAntesSalvar(notaFiscalTO);
 
-    return notaFiscalRepository.save(notaFiscal);
+    return notaFiscalRepository.save(notaFiscalTO);
   }
 
   public void delete(Long id) {

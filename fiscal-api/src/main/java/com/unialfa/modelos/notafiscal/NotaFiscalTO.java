@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Entity
 @Table(name = "nota_fiscal")
-public class NotaFiscal implements Serializable {
+public class NotaFiscalTO implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
