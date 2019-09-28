@@ -1,6 +1,6 @@
 package com.unialfa.modelos.notafiscal;
 
-import com.unialfa.modelos.notafiscal.enums.TipoImpostoE;
+import com.unialfa.modelos.imposto.enums.TipoImpostoE;
 import org.springframework.format.annotation.NumberFormat;
 
 import javax.persistence.*;

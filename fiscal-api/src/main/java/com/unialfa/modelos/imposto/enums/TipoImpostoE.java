@@ -1,4 +1,4 @@
-package com.unialfa.modelos.notafiscal.enums;
+package com.unialfa.modelos.imposto.enums;
 
 import com.unialfa.modelos.imposto.ICMS;
 import com.unialfa.modelos.imposto.ISS;

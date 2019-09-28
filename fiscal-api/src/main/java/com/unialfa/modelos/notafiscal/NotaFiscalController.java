@@ -1,6 +1,6 @@
 package com.unialfa.modelos.notafiscal;
 
-import com.unialfa.modelos.notafiscal.enums.TipoImpostoE;
+import com.unialfa.modelos.imposto.enums.TipoImpostoE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
